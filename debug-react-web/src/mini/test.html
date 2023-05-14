@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#000000" />
+  <meta name="description" content="Web site created using create-react-app" />
+
+  <title>React App</title>
+</head>
+
+<body>
+  <div id="root"></div>
+  <script>
+    let isMount = true
+    let workInProgressHook = null
+    let currentlyRenderingFiber = {
+      memoizedState: null,
+      stateNode: App
+    }
+
+    function dispatchSetState(queue, action) {
+      // 创建 update 
+      const update = {
+        action,
+        next: null
+      }
+
+      // 入队更新 形成循环链表 enqueueRenderPhaseUpdate
+      if (queue.pending === null/*判断是否存在cyc链表 */) {
+        update.next = update
+      } else {
+        update.next = queue.pending.next  // 当前的指向原来的第1个
+        queue.pending.next = update // 原来的
+      }
+      queue.pending = update
+
+      run() // schedule
+    }
+
+    function useState(initialState) {
+      let hook = null
+      if (isMount) {
+        /* 初始化阶段 */
+        initialState = typeof initialState === "function" ? initialState() : initialState;
+
+        //创建 hook mountWorkInProgressHook | updateWorkInProgressHook
+        hook = {
+          memoizedState: initialState,
+          next: null,
+          queue: {
+            pending: null
+          },
+        }
+        //挂载 hook
+        if (!currentlyRenderingFiber.memoizedState) {
+          currentlyRenderingFiber.memoizedState = hook
+        } else {
+          workInProgressHook.next = hook
+        }
+        //赋值到当前
+        workInProgressHook = hook
+
+      } else {
+        /* 更新阶段 */
+        hook = workInProgressHook
+        workInProgressHook = workInProgressHook.next
+      }
+
+      /* 此时 hook 指向 workInProgressHook */
+
+      let baseState = hook.memoizedState // 先拿到传入的值
+
+      const queue = hook.queue
+      /* 检查是否右需要计算的状态 updateReducer */
+      if (queue.pending) {
+        const pendingFirstQueue = queue.pending.next
+        let update = pendingFirstQueue
+        do {
+          const action = update.action
+          baseState = action(baseState)
+          update = update.next
+        } while (pendingFirstQueue !== update)
+
+        hook.queue.pending = null
+      }
+
+      hook.memoizedState = baseState
+
+      return [hook.memoizedState, dispatchSetState.bind(null, hook.queue)]
+    }
+
+
+    function App() {
+      const [num, setNum] = useState(0)
+      const [is, setIs] = useState('莫')
+
+      console.log('isMount:', isMount, 'num:', num, "is:", is);
+
+      return {
+        onClick() {
+          setNum(num => num + 1)
+        },
+        onSet() {
+          setIs(is => {
+            return is + Math.random().toFixed()
+          })
+        }
+      }
+    }
+
+    function run() {
+      workInProgressHook = currentlyRenderingFiber.memoizedState
+      const app = currentlyRenderingFiber.stateNode() // App
+      isMount = false
+      return app
+    }
+
+    window.app = run()
+    console.log('run')
+  </script>
+</body>
+
+</html>
