@@ -16,16 +16,27 @@
 
 ### 3. 启动 Vs Code 运行调试
 
-1. cd react-debug & yarn start 先把这个启动起来
-2. 然后使用 Vs Code 运行调试，选"针对 localhost 启动 Edge 调试"。
+1. cd debug-react-web and yarn start 先把项目启动起来。
+2. 然后使用 Vs Code 运行调试。根据自己需要配置也行。
 
-调试工具在 VScode 侧边栏一个小虫子和三角形的那个。
+> 注意：用 vscode 打开 as-you-see-react 件，这样源码和 webDemo 都在工作区了比较方便。
+
+> 注意：调试工具在 VScode 侧边栏一只小虫子的按钮。如果不会使用 google 一下很简单。
 
 ### 尽情调试
+
+1. 主要的源码位置位于 `react\packages`中的 react、react-dom、react-reconciler、scheduler 文件夹中。
+2. 没有使用 VScode 调试工具的话，可以直接在浏览器打断点。
+3. 使用 VScode 调试工具可以直接在 VScode 里打断点。（推荐）
+4. 可以在不增删的情况下写注释，写代码。(sourceMap 映射行对应不上会乱的)
 
 现在在源码里随意打断点就行了,注意发行版的代码在.old.js 里，也就是说 new.js 的可以不用看，因为 react 一直在同构。
 
 # 其他辅助信息
+
+## 各模块系统和主要方法
+
+[bubucuo 总结的思维导图](https://www.processon.com/view/link/60b206c2e0b34d3841931a88)
 
 ## 使用 Chrome Performance 标签分析组件
 
@@ -46,15 +57,21 @@ $0` `$1` `$_
 - `$_`: 引用 console 中上一个表达式返回的值
 - 使用场景：在 console 中我们可能经常要尝试一些功能，写一些测试代码。`$0` 和 `$1` 能够让我们快速选中 dom 节点，对选中的 dom 做些操作。`$_` 方便我们在没有给返回值赋给变量，但又需要引用这个值的情况使用。
 
-元素 & 源码
+### 浏览器调试思路
 
-​ store as global variable 保存为全局变量
-
-条件表达式
+1. 条件表达式,浏览器的条件断点
 
 xxx == true 、xxx=='xxx' 表达式为 ture 才进入断点
 
-VsCode 代码层级折叠
+2. 保存为全局对象
+
+3. 在浏览器修改本地代码等
+
+具体可自行搜索
+
+### VsCode 一些小技巧
+
+1. 代码层级折叠
 
 - 折叠 **`Ctrl+Shift+[`**
 
@@ -64,11 +81,11 @@ VsCode 代码层级折叠
 
   代码展开：先按 ctrl+k，再按 ctrl+j
 
-18 对比 demo
+### react 新旧渲染模式对比 demo
 
 https://claudiopro.github.io/react-fiber-vs-stack-demo/
 
-# 参考
+## 参考
 
 [zxg\_神说要有光](https://juejin.cn/user/2788017216685118)
 

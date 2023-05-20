@@ -241,7 +241,7 @@ export function createRoot(
       : container;
   listenToAllSupportedEvents(rootContainerElement);
 
-  return new ReactDOMRoot(root);
+  return new ReactDOMRoot(root); // 这一步将挂载render和unmount方法到原型链上
 }
 
 function ReactDOMHydrationRoot(internalRoot: FiberRoot) {
