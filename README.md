@@ -9,10 +9,16 @@
 
 ### 1. `拉取本仓库`
 
+```shell
+git clone https://github.com/raotaohub/as-you-see-react.git
+```
+
 ### 2. `安装依赖`
 
+```shell
 1.  cd debug-react-web
 2.  yarn install
+```
 
 ### 3. 启动 Vs Code 运行调试
 
