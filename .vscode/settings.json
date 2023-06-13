@@ -31,8 +31,6 @@
     //
     "**.new.js": true,
     "**/*.new.js": true,
-    "**.md": true,
-    "**/*.md": true,
     //
     "**/test-utils": true,
     "**/**/__tests__": true,
@@ -41,17 +39,14 @@
     "**/node_modules": true,
     "**/LICENSE": true
   },
+
   "files.exclude": {
-    "*.json": true,
     "*.lock": true,
     "*.git": true,
     "**/*.lock": true,
-    "**/*.json": true,
     //
     "**.new.js": true,
     "**/*.new.js": true,
-    "**.md": true,
-    "**/*.md": true,
     //
     "**/test-utils": true,
     "**/**/__tests__": true,

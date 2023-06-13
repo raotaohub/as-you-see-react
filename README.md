@@ -38,6 +38,10 @@ git clone https://github.com/raotaohub/as-you-see-react.git
 
 现在在源码里随意打断点就行了,注意发行版的代码在.old.js 里，也就是说 new.js 的可以不用看，因为 react 一直在同构。
 
+### 搜索和文件栏已设置屏蔽
+
+具体配置在`.vscode\settings.json`,search.exclude 和 file.exclude 属性。
+
 # 其他辅助信息
 
 ## 各模块系统和主要方法
