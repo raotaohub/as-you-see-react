@@ -1,9 +1,12 @@
-## `思路`：
+# 如你所见
 
-1. 通过 webpack resolve.alias 改变依赖包的指向，我们可以指向打包后的 react 源码，来调试 react 源码。
-2. 恰巧指向源码后，其同目录下如果包含.map.js 文件，就能定位未压缩前的源码位置。
+这是一个调试 react 源码的项目：
 
----
+1. 不关注工程问题！没有额外的命令！
+2. 只需要 clone 下来，即可调试源码。
+3. `note` 文件内有笔记但请别看，请根据自己理解另行起草。
+4. 欢迎在 issues 里提问，或者说开主题，将 issues 视为**blog**吧~
+5. 具体参见【开始具体操作】
 
 ## 开始具体操作
 
@@ -16,16 +19,17 @@ git clone https://github.com/raotaohub/as-you-see-react.git
 ### 2. `安装依赖`
 
 ```shell
-1.  cd debug-react-web
-2.  yarn install
+1.  cd as-you-see-react
+2.  cd debug-react-web
+3.  yarn install
+4.  yarn start
 ```
 
 ### 3. 启动 Vs Code 运行调试
 
-1. cd debug-react-web and yarn start 先把项目启动起来。
-2. 然后使用 Vs Code 运行调试。根据自己需要配置也行。
+使用 Vs Code 运行调试。`VsCode 快捷键 Ctrl+Shift+D`
 
-> 注意：用 vscode 打开 as-you-see-react 件，这样源码和 webDemo 都在工作区了比较方便。
+> 注意：用 vscode 打开 as-you-see-react 文件，这样源码和 其他文件，都在工作区方便浏览。
 
 > 注意：调试工具在 VScode 侧边栏一只小虫子的按钮。如果不会使用 google 一下很简单。
 
@@ -34,13 +38,15 @@ git clone https://github.com/raotaohub/as-you-see-react.git
 1. 主要的源码位置位于 `react\packages`中的 react、react-dom、react-reconciler、scheduler 文件夹中。
 2. 没有使用 VScode 调试工具的话，可以直接在浏览器打断点。
 3. 使用 VScode 调试工具可以直接在 VScode 里打断点。（推荐）
-4. 可以在不增删的情况下写注释，写代码。(sourceMap 映射行对应不上会乱的)
+4. 可以在源码里，**不增减行数**的情况下写注释，写代码。**(否则 sourceMap 映射行对应不上会乱的)**
 
 现在在源码里随意打断点就行了,注意发行版的代码在.old.js 里，也就是说 new.js 的可以不用看，因为 react 一直在同构。
 
 ### 搜索和文件栏已设置屏蔽
 
 具体配置在`.vscode\settings.json`,search.exclude 和 file.exclude 属性。
+
+> 屏蔽无关的文件，可根据需自行配置。
 
 # 其他辅助信息
 
