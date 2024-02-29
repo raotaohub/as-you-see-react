@@ -1,0 +1,21 @@
+{
+  "name": "as-you-see-react",
+  "version": "1.0.0",
+  "description": "这是一个调试 react 源码的项目：",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "init": "cd debug-react-web && npm install && npm run start",
+    "init": "cd debug-react-web && npm run start"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/raotaohub/as-you-see-react.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/raotaohub/as-you-see-react/issues"
+  },
+  "homepage": "https://github.com/raotaohub/as-you-see-react#readme"
+}

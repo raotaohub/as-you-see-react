@@ -19,11 +19,10 @@ git clone https://github.com/raotaohub/as-you-see-react.git
 ### 2. `安装依赖`
 
 ```shell
-1.  cd as-you-see-react
-2.  cd debug-react-web
-3.  yarn install
-4.  yarn start
+npm run init
 ```
+
+yarn 失败则用 npm 反之亦然
 
 ### 3. 启动 Vs Code 运行调试
 
