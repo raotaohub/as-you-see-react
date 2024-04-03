@@ -6,7 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "init": "cd debug-react-web && npm install && npm run start",
-    "init": "cd debug-react-web && npm run start"
+    "start": "cd debug-react-web && npm run start"
   },
   "repository": {
     "type": "git",
